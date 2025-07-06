@@ -2,18 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>JSON Formatter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSON Formatter - Clean & Fast</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:,">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>JSON Formatter</h1>
-  <textarea id="input" placeholder="Paste your JSON here..."></textarea>
-  <button onclick="formatJSON()">Format</button>
-  <div id="error"></div>
-  <textarea id="output" readonly placeholder="Formatted JSON will appear here..."></textarea>
-  <button id="copyBtn" onclick="copyFormattedJSON()">Copy</button>
-  <div id="copyMsg" class="copy-message" style="display:none;">Copied!</div>
+  <div class="container">
+    <h1>JSON Formatter</h1>
+
+    <!-- Textarea for input JSON -->
+    <label for="input">Paste your JSON below:</label>
+    <div class="box-wrapper">
+      <div class="textarea-container">
+        <pre class="line-numbers" id="input-line-numbers"></pre>
+        <textarea id="input"></textarea>
+      </div>
+      <div class="action-bar">
+        <select id="actionSelector">
+          <option value="format">Format JSON</option>
+          <option value="minify">Minify JSON</option>
+          <option value="xml2json">Convert XML to JSON</option>
+        </select>
+        <button type="button" onclick="handleAction()">Apply</button>
+      </div>
+      
+    </div>
+
+    <div id="error" class="error"></div>
+
+    <!-- Textarea for output JSON -->
+    <label for="output">Formatted JSON:</label>
+    <div class="box-wrapper">
+      <div class="textarea-container">
+        <pre class="line-numbers" id="output-line-numbers"></pre>
+        <textarea id="output" readonly></textarea>
+      </div>
+      <button class="icon-btn" onclick="copyFormattedJSON()" title="Copy to clipboard">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-width="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-width="2"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="toast" class="toast">Copied!</div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
-
