@@ -11,12 +11,13 @@
 <body>
   <div class="container">
     <h1>JSON Formatter</h1>
-
+    
     <div class="box-wrapper">
       <textarea id="input" placeholder="Paste your JSON here..."></textarea>
       <button class="icon-btn" onclick="formatJSON()" title="Format JSON">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 4h16v16H4z"/><path d="M9 9h6v6H9z"/>
+        <!-- Format Icon (code arrows) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
         </svg>
       </button>
     </div>
@@ -26,9 +27,10 @@
     <div class="box-wrapper">
       <textarea id="output" readonly placeholder="Formatted JSON will appear here..."></textarea>
       <button class="icon-btn" onclick="copyFormattedJSON()" title="Copy to clipboard">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        <!-- Copy Icon (clipboard) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-width="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-width="2"></path>
         </svg>
       </button>
     </div>
