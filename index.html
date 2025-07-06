@@ -2,18 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>JSON Formatter</title>
+  <title>JSON Toolkit</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>JSON Formatter</h1>
-  <textarea id="input" placeholder="Paste your JSON here..."></textarea>
-  <button onclick="formatJSON()">Format</button>
-  <div id="error"></div>
-  <textarea id="output" readonly placeholder="Formatted JSON will appear here..."></textarea>
-  <button id="copyBtn" onclick="copyFormattedJSON()">Copy</button>
-  <div id="copyMsg" class="copy-message" style="display:none;">Copied!</div>
+  <header>
+    <nav class="navbar">
+      <div class="logo">JSON Toolkit</div>
+      <ul class="nav-links">
+        <li><button onclick="showPanel('format')">Format JSON</button></li>
+        <li><button onclick="showPanel('validate')">Validate JSON</button></li>
+        <li><button onclick="showPanel('minify')">Minify JSON</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Format Panel -->
+    <section id="format" class="panel active">
+      <h1>Format JSON</h1>
+      <textarea id="inputFormat" placeholder="Paste your JSON here..."></textarea>
+      <button onclick="formatJSON()">Format</button>
+      <div id="errorFormat" class="error"></div>
+      <div class="textarea-wrapper">
+        <textarea id="outputFormat" readonly placeholder="Formatted JSON will appear here..."></textarea>
+        <button class="copy-icon-btn" onclick="copyText('outputFormat')" aria-label="Copy formatted JSON">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="copyMsgFormat" class="copy-message">Copied!</div>
+    </section>
+
+    <!-- Validate Panel -->
+    <section id="validate" class="panel">
+      <h1>Validate JSON</h1>
+      <textarea id="inputValidate" placeholder="Paste your JSON here..."></textarea>
+      <button onclick="validateJSON()">Validate</button>
+      <div id="errorValidate" class="error"></div>
+      <div id="validMsg" class="valid-message"></div>
+    </section>
+
+    <!-- Minify Panel -->
+    <section id="minify" class="panel">
+      <h1>Minify JSON</h1>
+      <textarea id="inputMinify" placeholder="Paste your JSON here..."></textarea>
+      <button onclick="minifyJSON()">Minify</button>
+      <div id="errorMinify" class="error"></div>
+      <div class="textarea-wrapper">
+        <textarea id="outputMinify" readonly placeholder="Minified JSON will appear here..."></textarea>
+        <button class="copy-icon-btn" onclick="copyText('outputMinify')" aria-label="Copy minified JSON">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <div id="copyMsgMinify" class="copy-message">Copied!</div>
+    </section>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>
-

@@ -1,39 +1,73 @@
+// Show the selected panel, hide others
+function showPanel(panelId) {
+  document.querySelectorAll('.panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  document.getElementById(panelId).classList.add('active');
+  clearMessages();
+}
+
+function clearMessages() {
+  document.querySelectorAll('.error').forEach(el => el.textContent = '');
+  document.querySelectorAll('.valid-message').forEach(el => el.textContent = '');
+  document.querySelectorAll('.copy-message').forEach(el => el.classList.remove('show'));
+}
+
 function formatJSON() {
-  const input = document.getElementById("input").value;
-  const output = document.getElementById("output");
-  const error = document.getElementById("error");
-  
+  const input = document.getElementById('inputFormat').value;
+  const errorDiv = document.getElementById('errorFormat');
+  const output = document.getElementById('outputFormat');
+  errorDiv.textContent = '';
   try {
     const parsed = JSON.parse(input);
-    const formatted = JSON.stringify(parsed, null, 2);
-    output.value = formatted;
-    error.textContent = "";
+    output.value = JSON.stringify(parsed, null, 2);
   } catch (e) {
-    output.value = "";
-    error.textContent = "Invalid JSON: " + e.message;
+    errorDiv.textContent = 'Invalid JSON: ' + e.message;
+    output.value = '';
   }
 }
-function copyFormattedJSON() {
-  const output = document.getElementById("output");
-  const msg = document.getElementById("copyMsg");
 
-  if (!output.value) {
-    // Optionally show a different message or do nothing
-    return;
+function validateJSON() {
+  const input = document.getElementById('inputValidate').value;
+  const errorDiv = document.getElementById('errorValidate');
+  const validMsg = document.getElementById('validMsg');
+  errorDiv.textContent = '';
+  validMsg.textContent = '';
+  try {
+    JSON.parse(input);
+    validMsg.textContent = 'JSON is valid!';
+  } catch (e) {
+    errorDiv.textContent = 'Invalid JSON: ' + e.message;
   }
+}
 
-  navigator.clipboard.writeText(output.value)
+function minifyJSON() {
+  const input = document.getElementById('inputMinify').value;
+  const errorDiv = document.getElementById('errorMinify');
+  const output = document.getElementById('outputMinify');
+  errorDiv.textContent = '';
+  try {
+    const parsed = JSON.parse(input);
+    output.value = JSON.stringify(parsed);
+  } catch (e) {
+    errorDiv.textContent = 'Invalid JSON: ' + e.message;
+    output.value = '';
+  }
+}
+
+// Copy text from a given textarea id and show message
+function copyText(textareaId) {
+  const textarea = document.getElementById(textareaId);
+  const msg = document.getElementById('copyMsg' + textareaId.replace('output', ''));
+  if (!textarea.value) return;
+
+  navigator.clipboard.writeText(textarea.value)
     .then(() => {
-      // Show the success message
       msg.classList.add('show');
-      
-      // Hide after 2 seconds
-      setTimeout(() => {
-        msg.classList.remove('show');
-      }, 2000);
+      setTimeout(() => msg.classList.remove('show'), 2000);
     })
-    .catch(err => {
-      alert("Failed to copy: " + err);
-    });
+    .catch(() => alert('Failed to copy!'));
 }
 
+// Initialize with format panel active
+showPanel('format');
