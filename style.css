@@ -1,194 +1,86 @@
-/* Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Body & fonts */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #fff;
-  color: #222;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 2rem;
 }
 
-/* Navbar */
-header {
-  background: #111;
-  color: white;
-  padding: 0.5rem 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.navbar {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 1.3rem;
-  letter-spacing: 1.2px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-links li button {
-  background: transparent;
-  border: none;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.nav-links li button:hover,
-.nav-links li button:focus {
-  background: #444;
-  outline: none;
-}
-
-/* Main content */
-main {
-  flex-grow: 1;
-  max-width: 900px;
-  margin: 2rem auto 3rem;
-  padding: 0 1rem;
-}
-
-/* Panels */
-.panel {
-  display: none;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.panel.active {
-  display: flex;
-}
-
-/* Headings */
 h1 {
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 }
 
-/* Textareas */
 textarea {
   width: 100%;
-  min-height: 180px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  height: 180px;
   padding: 1rem;
   font-family: monospace;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   resize: vertical;
-  transition: border-color 0.3s ease;
-  padding-right: 40px; /* space for copy icon */
+  margin-bottom: 1rem;
 }
 
 textarea:focus {
+  border-color: #4CAF50;
   outline: none;
-  border-color: #333;
 }
 
-/* Buttons */
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 button {
-  align-self: flex-start;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
+  padding: 0.6rem 1.4rem;
   font-size: 1rem;
-  color: #111;
-  background: #eee;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  font-weight: 600;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-button:hover,
-button:focus {
-  background: #ddd;
-  border-color: #999;
-  outline: none;
+button:hover {
+  background-color: #43a047;
 }
 
-/* Error and Valid messages */
 .error {
-  color: #d33;
+  color: #c62828;
   font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.valid-message {
-  color: #2a7;
-  font-weight: 600;
-}
-
-/* Copy message */
-.copy-message {
-  color: #2a7;
-  font-weight: 600;
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   opacity: 0;
   transition: opacity 0.3s ease;
-  margin-top: 0.4rem;
+  z-index: 999;
 }
 
-.copy-message.show {
+.toast.show {
   opacity: 1;
-}
-
-/* Copy icon button */
-.textarea-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-.copy-icon-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #666;
-  padding: 4px;
-  border-radius: 4px;
-  transition: color 0.2s ease;
-}
-
-.copy-icon-btn:hover,
-.copy-icon-btn:focus {
-  color: #111;
-  outline: none;
-}
-
-.copy-icon-btn svg {
-  display: block;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .nav-links {
-    gap: 0.5rem;
-  }
-  textarea {
-    min-height: 140px;
-  }
 }

@@ -1,22 +1,7 @@
-// Show the selected panel, hide others
-function showPanel(panelId) {
-  document.querySelectorAll('.panel').forEach(panel => {
-    panel.classList.remove('active');
-  });
-  document.getElementById(panelId).classList.add('active');
-  clearMessages();
-}
-
-function clearMessages() {
-  document.querySelectorAll('.error').forEach(el => el.textContent = '');
-  document.querySelectorAll('.valid-message').forEach(el => el.textContent = '');
-  document.querySelectorAll('.copy-message').forEach(el => el.classList.remove('show'));
-}
-
 function formatJSON() {
-  const input = document.getElementById('inputFormat').value;
-  const errorDiv = document.getElementById('errorFormat');
-  const output = document.getElementById('outputFormat');
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  const errorDiv = document.getElementById('error');
   errorDiv.textContent = '';
   try {
     const parsed = JSON.parse(input);
@@ -27,47 +12,35 @@ function formatJSON() {
   }
 }
 
-function validateJSON() {
-  const input = document.getElementById('inputValidate').value;
-  const errorDiv = document.getElementById('errorValidate');
-  const validMsg = document.getElementById('validMsg');
-  errorDiv.textContent = '';
-  validMsg.textContent = '';
+function copyFormattedJSON() {
+  const output = document.getElementById('output');
+  if (!output.value) return;
+  navigator.clipboard.writeText(output.value).then(() => {
+    showToast("Copied!");
+  });
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function isLikelyJSON(text) {
+  const trimmed = text.trim();
+  return trimmed.startsWith('{') || trimmed.startsWith('[');
+}
+
+window.addEventListener("load", async () => {
   try {
-    JSON.parse(input);
-    validMsg.textContent = 'JSON is valid!';
+    const text = await navigator.clipboard.readText();
+    if (isLikelyJSON(text)) {
+      document.getElementById("input").value = text;
+      formatJSON();
+      showToast("Auto-formatted JSON from clipboard");
+    }
   } catch (e) {
-    errorDiv.textContent = 'Invalid JSON: ' + e.message;
+    console.log("Clipboard read blocked:", e.message);
   }
-}
-
-function minifyJSON() {
-  const input = document.getElementById('inputMinify').value;
-  const errorDiv = document.getElementById('errorMinify');
-  const output = document.getElementById('outputMinify');
-  errorDiv.textContent = '';
-  try {
-    const parsed = JSON.parse(input);
-    output.value = JSON.stringify(parsed);
-  } catch (e) {
-    errorDiv.textContent = 'Invalid JSON: ' + e.message;
-    output.value = '';
-  }
-}
-
-// Copy text from a given textarea id and show message
-function copyText(textareaId) {
-  const textarea = document.getElementById(textareaId);
-  const msg = document.getElementById('copyMsg' + textareaId.replace('output', ''));
-  if (!textarea.value) return;
-
-  navigator.clipboard.writeText(textarea.value)
-    .then(() => {
-      msg.classList.add('show');
-      setTimeout(() => msg.classList.remove('show'), 2000);
-    })
-    .catch(() => alert('Failed to copy!'));
-}
-
-// Initialize with format panel active
-showPanel('format');
+});
