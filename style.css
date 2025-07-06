@@ -84,3 +84,28 @@ button:hover {
 .toast.show {
   opacity: 1;
 }
+
+.box-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.icon-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #4CAF50;
+}
+
+.icon-btn:hover {
+  color: #2e7d32;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
