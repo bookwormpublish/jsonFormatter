@@ -109,3 +109,30 @@ button:hover {
   width: 24px;
   height: 24px;
 }
+
+.action-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.action-bar select,
+.action-bar button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.action-bar button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.action-bar button:hover {
+  background-color: #43a047;
+}
+

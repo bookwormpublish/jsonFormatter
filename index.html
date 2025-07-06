@@ -16,7 +16,15 @@
     <label for="input">Paste your JSON below:</label>
     <div class="box-wrapper">
       <textarea id="input" placeholder="{\n  \"example\": true\n}"></textarea>
-      <button class="format-btn" onclick="formatJSON()" title="Format JSON">Format</button>
+      <div class="action-bar">
+        <select id="actionSelector">
+          <option value="format">Format JSON</option>
+          <option value="minify">Minify JSON</option>
+          <option value="xml2json">Convert XML to JSON</option>
+        </select>
+        <button onclick="handleAction()">Apply</button>
+      </div>
+      
     </div>
 
     <div id="error" class="error"></div>
