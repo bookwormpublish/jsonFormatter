@@ -11,7 +11,8 @@
   <button onclick="formatJSON()">Format</button>
   <div id="error"></div>
   <textarea id="output" readonly placeholder="Formatted JSON will appear here..."></textarea>
-
+  <button id="copyBtn" onclick="copyFormattedJSON()">Copy</button>
+  <div id="copyMsg" class="copy-message" style="display:none;">Copied!</div>
   <script src="script.js"></script>
 </body>
 </html>

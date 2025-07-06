@@ -13,4 +13,27 @@ function formatJSON() {
     error.textContent = "Invalid JSON: " + e.message;
   }
 }
+function copyFormattedJSON() {
+  const output = document.getElementById("output");
+  const msg = document.getElementById("copyMsg");
+
+  if (!output.value) {
+    // Optionally show a different message or do nothing
+    return;
+  }
+
+  navigator.clipboard.writeText(output.value)
+    .then(() => {
+      // Show the success message
+      msg.classList.add('show');
+      
+      // Hide after 2 seconds
+      setTimeout(() => {
+        msg.classList.remove('show');
+      }, 2000);
+    })
+    .catch(err => {
+      alert("Failed to copy: " + err);
+    });
+}
 

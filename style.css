@@ -22,4 +22,23 @@ button {
   color: red;
   margin-top: 0.5rem;
 }
+#copyBtn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.copy-message {
+  margin-top: 0.5rem;
+  color: green;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.copy-message.show {
+  opacity: 1;
+  display: block;
+}
 
