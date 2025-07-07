@@ -202,6 +202,22 @@ function autoResizeTextarea(textareaId) {
   container.style.height = newHeight + 'px';
 }
 
+function showDisclaimer() {
+  document.getElementById('disclaimerModal').style.display = 'block';
+}
+
+function closeDisclaimer() {
+  document.getElementById('disclaimerModal').style.display = 'none';
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+  const modal = document.getElementById('disclaimerModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
+
 
 window.addEventListener("load", async () => {
   // Initialize line numbers

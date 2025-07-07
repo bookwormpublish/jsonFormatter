@@ -8,6 +8,26 @@
   <link rel="icon" href="data:,">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#000" },
+        button: { background: "#f1d600" }
+      },
+      theme: "classic",
+      content: {
+        message: "We use cookies to improve your experience and serve ads.",
+        dismiss: "Got it!",
+        link: "Privacy Policy",
+        href: "/privacy-policy.html"
+      }
+    });
+  });
+</script>
+
 <body>
   <div class="container">
     <h1>JSON Formatter</h1>
@@ -51,5 +71,23 @@
   </div>
 
   <script src="script.js"></script>
+  <footer>
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-links">
+          <a href="/privacy-policy.html">Privacy Policy</a> | <a href="#" onclick="showDisclaimer()">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Disclaimer Modal -->
+  <div id="disclaimerModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDisclaimer()">&times;</span>
+      <h3>Disclaimer</h3>
+      <p>This site earns revenue from display advertising (Google AdSense) and may use affiliate links.</p>
+    </div>
+  </div>
 </body>
 </html>
