@@ -175,3 +175,118 @@ button:hover {
   background-color: #43a047;
 }
 
+/* Footer Styles */
+footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+footer a {
+  color: #bdc3c7;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ecf0f1;
+  text-decoration: underline;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-links {
+  margin-bottom: 1rem;
+}
+
+.footer-disclaimer {
+  margin-bottom: 1rem;
+}
+
+.footer-disclaimer p {
+  color: #95a5a6;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footer-copyright small {
+  color: #95a5a6;
+  font-size: 0.8rem;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.modal-content p {
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-col {
+    text-align: center;
+  }
+  
+  .escaper-right-padding {
+    margin-right: 0;
+  }
+  
+  .visible-xs {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .visible-xs {
+    display: none;
+  }
+}
+
