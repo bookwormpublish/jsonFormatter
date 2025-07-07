@@ -203,18 +203,20 @@ function autoResizeTextarea(textareaId) {
 }
 
 function showDisclaimer() {
-  document.getElementById('disclaimerModal').style.display = 'block';
+  const modal = document.getElementById('disclaimerModal');
+  modal.classList.add('show');
 }
 
 function closeDisclaimer() {
-  document.getElementById('disclaimerModal').style.display = 'none';
+  const modal = document.getElementById('disclaimerModal');
+  modal.classList.remove('show');
 }
 
 // Close modal when clicking outside of it
 window.onclick = function(event) {
   const modal = document.getElementById('disclaimerModal');
   if (event.target === modal) {
-    modal.style.display = 'none';
+    modal.classList.remove('show');
   }
 }
 
